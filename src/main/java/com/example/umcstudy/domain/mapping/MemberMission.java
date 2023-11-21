@@ -32,7 +32,7 @@ public class MemberMission extends BaseTime {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "varchar(15) default 'CHALLENGING")
+    @Column(columnDefinition = "varchar(15) default 'CHALLENGING'")
     private MissionStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY)
