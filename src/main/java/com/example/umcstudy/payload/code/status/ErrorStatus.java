@@ -19,6 +19,22 @@ public enum ErrorStatus implements BaseErrorCode {
     MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, "MEMBER4001", "사용자가 없습니다."),
     NICKNAME_NOT_EXIST(HttpStatus.BAD_REQUEST, "MEMBER4002", "닉네임은 필수입니다."),
 
+    //STORE ERROR
+    STORE_NOT_FOUND(HttpStatus.NOT_FOUND, "STORE4001", "식당이 없져요."),
+
+    //JOIN ERROR
+    NAME_NOT_EXIST(HttpStatus.BAD_REQUEST, "JOIN4001", "너의 이름을 정해주겠니.."),
+    SEX_NOT_EXIST(HttpStatus.BAD_REQUEST,"JOIN4002", "불분명한 너의 성정체성"),
+    BIRTH_YEAR_NOT_EXIST(HttpStatus.BAD_REQUEST,"JOIN4003", "몇 년도에 태어났어.."),
+    BIRTH_MONTH_NOT_EXIST(HttpStatus.BAD_REQUEST,"JOIN4004", "몇 월에 태어났을까.."),
+    BIRTH_DAY_NOT_EXIST(HttpStatus.BAD_REQUEST,"JOIN4005", "며칠에 태어났는지도 궁금해.."),
+    ADDRESS_LENGTH_NOT_SATISFIED(HttpStatus.BAD_REQUEST,"JOIN4006", "기본 주소: 최소 5자 최대 12자 샛끼야"),
+    SPEC_ADDRESS_LENGTH_NOT_SATISFIED(HttpStatus.BAD_REQUEST,"JOIN4007", "상세 주소: 최소 5자 최대 12자 샛끼야"),
+
+
+    //FOOT CATEGORY ERROR
+    FOOD_CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND, "FOOD_CATEGORY4001", "그런 음식 카테고리는 없다네"),
+
     //ARTICLE ERROR
     ARTICLE_NOT_FOUND(HttpStatus.NOT_FOUND, "ARTICLE4001", "게시글이 없습니다."),
 

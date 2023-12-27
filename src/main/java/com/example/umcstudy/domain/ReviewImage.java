@@ -1,6 +1,7 @@
 package com.example.umcstudy.domain;
 
 import com.example.umcstudy.domain.common.BaseTime;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -28,6 +29,6 @@ public class ReviewImage extends BaseTime {
     @Lob
     private String imageUrl;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Review review;
 }

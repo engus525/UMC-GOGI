@@ -31,11 +31,12 @@ public class TempController {
         System.out.println("tempExceptionDTO.toString() = " + tempExceptionDTO.toString());
         return ApiResponse.onSuccess(tempExceptionDTO);
     }
+
     @GetMapping("/v2/exception")
     public ResponseEntity<TempExceptionDTO> exceptionPageV2(@RequestParam Integer flag) {
         tempQueryService.checkFlag(flag);
         TempExceptionDTO tempExceptionDTO = TempConverter.toTempExceptionDTO(flag);
-        return ResponseEntity.ok(tempExceptionDTO);
+        return ResponseEntity.ok(tempExceptionDTO);//200 success 201 created
     }
 
 }

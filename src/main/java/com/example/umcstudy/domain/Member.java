@@ -24,13 +24,17 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @Getter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-
+@DynamicUpdate
+@DynamicInsert
 public class Member extends BaseTime {
 
     @Id
@@ -59,9 +63,10 @@ public class Member extends BaseTime {
 
     private Timestamp inactiveDate;
 
-    @Column(nullable = false, length = 50)
+//    @Column(nullable = false, length = 50)
     private String email;
 
+    @ColumnDefault("0")
     private Integer point;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
