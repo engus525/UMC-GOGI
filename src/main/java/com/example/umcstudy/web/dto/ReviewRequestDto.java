@@ -13,4 +13,12 @@ public class ReviewRequestDto {
         List<String> image;
         Long memberId;
     }
+
+    @Getter
+    public static class ReviewDTO {
+        String title;
+        Float score;
+        String body;
+
+    }
 }

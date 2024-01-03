@@ -8,5 +8,5 @@ public interface StoreQueryService {
 
     Store findById(Long id);
     boolean existsById(Long id);
-    Page<Review> getReviewList(Long StoreId, Integer page);
+    Page<Review> getReviewList(Long storeId, Integer page, Long memberId);
 }

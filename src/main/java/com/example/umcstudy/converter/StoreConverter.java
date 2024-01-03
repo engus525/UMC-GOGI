@@ -1,8 +1,8 @@
 package com.example.umcstudy.converter;
 
 import com.example.umcstudy.domain.Review;
-import com.example.umcstudy.web.dto.StoreRequestDto;
-import com.example.umcstudy.web.dto.StoreResponseDto;
+import com.example.umcstudy.web.dto.ReviewRequestDto;
+import com.example.umcstudy.web.dto.ReviewResponseDto;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,7 +10,7 @@ import org.springframework.data.domain.Page;
 
 public class StoreConverter {
 
-    public static Review toReview(StoreRequestDto.ReviewDTO request){
+    public static Review toReview(ReviewRequestDto.ReviewDTO request){
         return Review.builder()
             .title(request.getTitle())
             .score(request.getScore())
@@ -18,15 +18,15 @@ public class StoreConverter {
             .build();
     }
 
-    public static StoreResponseDto.CreateReviewResultDto toCreateReviewResultDTO(Review review){
-        return StoreResponseDto.CreateReviewResultDto.builder()
+    public static ReviewResponseDto.CreateReviewResultDto toCreateReviewResultDTO(Review review){
+        return ReviewResponseDto.CreateReviewResultDto.builder()
             .reviewId(review.getId())
             .createdAt(LocalDateTime.now())
             .build();
     }
 
-    public static StoreResponseDto.ReviewPreViewDto reviewPreViewDto(Review review){
-        return StoreResponseDto.ReviewPreViewDto.builder()
+    public static ReviewResponseDto.ReviewPreViewDto reviewPreViewDto(Review review){
+        return ReviewResponseDto.ReviewPreViewDto.builder()
             .ownerNickname(review.getMember().getName())
             .score(review.getScore())
             .createdAt(review.getCreatedAt().toLocalDate())
@@ -34,12 +34,12 @@ public class StoreConverter {
             .build();
     }
 
-    public static StoreResponseDto.ReviewPreViewListDto reviewPreViewListDto(Page<Review> reviewList){
+    public static ReviewResponseDto.ReviewPreViewListDto reviewPreViewListDto(Page<Review> reviewList){
 
-        List<StoreResponseDto.ReviewPreViewDto> reviewPreViewDtoList = reviewList.stream()
+        List<ReviewResponseDto.ReviewPreViewDto> reviewPreViewDtoList = reviewList.stream()
             .map(StoreConverter::reviewPreViewDto).collect(Collectors.toList());
 
-        return StoreResponseDto.ReviewPreViewListDto.builder()
+        return ReviewResponseDto.ReviewPreViewListDto.builder()
             .isLast(reviewList.isLast())
             .isFirst(reviewList.isFirst())
             .totalPage(reviewList.getTotalPages())
