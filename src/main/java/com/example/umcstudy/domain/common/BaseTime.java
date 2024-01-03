@@ -2,7 +2,7 @@ package com.example.umcstudy.domain.common;
 
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -13,7 +13,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Getter
 public class BaseTime {
     @CreatedDate
-    private Timestamp createdAt;
+    private LocalDateTime createdAt;
     @LastModifiedDate
-    private Timestamp updatedAt;
+    private LocalDateTime updatedAt;
 }

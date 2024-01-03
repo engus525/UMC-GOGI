@@ -1,7 +1,7 @@
 package com.example.umcstudy.validation.validator;
 
 import com.example.umcstudy.payload.code.status.ErrorStatus;
-import com.example.umcstudy.service.FoodCategoryService;
+import com.example.umcstudy.service.StoreQueryService;
 import com.example.umcstudy.validation.annotation.ExistCategories;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
@@ -11,9 +11,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class CategoriesExistValidator implements ConstraintValidator<ExistCategories, List<Long>> {
+public class StoreExistValidator implements ConstraintValidator<ExistCategories, List<Long>> {
 
-    private final FoodCategoryService foodCategoryService;
+    private final StoreQueryService storeQueryService;
 
     @Override
     public void initialize(ExistCategories constraintAnnotation) {
@@ -23,11 +23,11 @@ public class CategoriesExistValidator implements ConstraintValidator<ExistCatego
     @Override
     public boolean isValid(List<Long> values, ConstraintValidatorContext context) {
         boolean isValid = values.stream()
-            .allMatch(foodCategoryService::existsById);
+            .allMatch(storeQueryService::existsById);
 
         if (!isValid) {
             context.disableDefaultConstraintViolation();
-            context.buildConstraintViolationWithTemplate(ErrorStatus.FOOD_CATEGORY_NOT_FOUND.getMessage()).addConstraintViolation();
+            context.buildConstraintViolationWithTemplate(ErrorStatus.STORE_NOT_FOUND.getMessage()).addConstraintViolation();
         }
 
         return isValid;
